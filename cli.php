@@ -509,7 +509,7 @@ abstract class CLI
 			{
 				$append = '';
 				$n 		= $longest[$k] - strlen($k);
-				for ($c=0;$c<$n; $c++) $append .= ' ';
+				for ($c=0;$c<$n+2; $c++) $append .= ' ';
 				
 				echo $this->colorText($k, self::BOLD) . $append;
 			}
@@ -518,26 +518,28 @@ abstract class CLI
 			$append = '';
 			foreach ($longest AS $length)
 			{
-				for ($c=0;$c<$length; $c++) $append .= '-';
+				for ($c=0;$c<$length+2; $c++) $append .= '-';
 			}
 			
 			echo substr($append,0,-5);
 		}
-		
+		$lineNumber = 0;
 		// Print entries
 		foreach ($array AS $entry)
 		{
-			echo PHP_EOL;
+			echo ($lineNumber != 0 || $headers) ? PHP_EOL : "";
 			
 			foreach ($entry AS $k => $v)
 			{
 				$append = '';
 				$n 		= $longest[$k] - strlen($v);
-				for ($c=0;$c<$n; $c++) $append .= ' ';
+				for ($c=0;$c<$n+2; $c++) $append .= ' ';
 				
 				echo $v . $append;
 			}
+			$lineNumber++;
 		}
+		echo PHP_EOL;
 	}
 	
 	/**
