@@ -652,7 +652,7 @@ abstract class CLI
 		}
 		else
 		{
-			echo trim($help);
+			echo trim($help) . "\n";
 		}
 		
 		if ($die)
