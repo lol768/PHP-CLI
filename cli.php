@@ -645,6 +645,8 @@ abstract class CLI
 		{
 			$help = preg_replace('/^(\s*?)\t/m', '$1  ', $help);
 		}
+
+		$help = str_replace(["<clr>","<clg>","<cy>","<clb>","<cm>","<clc>","<cw>","<cn>","<cbl>","<cr>", "<cg>", "<cbr>","<cb>","<cc>","<b>","<u>","<r>"], [chr(27) . self::LIGHT_RED, chr(27) . self::LIGHT_GREEN, chr(27) . self::YELLOW, chr(27) . self::LIGHT_BLUE, chr(27) . self::MAGENTA, chr(27) . self::LIGHT_CYAN, chr(27) . self::WHITE, chr(27) . self::NORMAL, chr(27) . self::BLACK, chr(27) . self::RED, chr(27) . self::GREEN, chr(27) . self::BROWN, chr(27) . self::BLUE, chr(27) . self::CYAN, chr(27) . self::BOLD, chr(27) . self::UNDERSCORE, chr(27) . self::REVERSE], $help);
 		
 		if ( ! $help)
 		{
